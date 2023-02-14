@@ -1,0 +1,194 @@
+Instruções
+O projeto 1, irá utilizar o Vite como a base funcional do código.
+Use este comando para instalar o Vite no seu projeto, tendo o Nodejs instalado na máquina.
+npm create vite @latest
+
+Para instalar as dependências, use:
+npm i
+
+
+
+                    Componentes
+                Import e export 
+o Import serve para reaproveitar um código já existe utilizando chaves ao redor dele.
+  Ex:
+import { Posted } from './pastadobutton';
+import { Post } from './src/Post'
+
+
+O export function serve para enviar o código para o Import, assim ele consegue reaproveitar.
+  Ex:
+export function App() {
+  return (
+    <div>
+      <Posted />
+      <Posted />
+      <Posted />
+      <Posted />
+    </div>
+  )
+}
+
+Em código completo fica assim:
+import { Posted } from './Post';
+
+export function App() {
+  return (
+    <div>
+      <Posted />
+      <Posted />
+      <Posted />
+      <Posted />
+    </div>
+  )
+}
+
+
+COMPONENTES
+Propiedades
+props
+São componentes para reaproveitar html, estilização, funcionamento em JavaScrip.
+Podendo ter diferienciação de cada exibição atraves das propiedades(props).
+  Ex:
+
+          Arquivo App.jsx
+import { Post } from './Post';
+
+export function App() {
+  return (
+    <div>
+      <Post
+        author="Matheus"
+        content="Vou fazer 19 anos"
+      />
+
+      <Post
+        author="Gustavo"
+        content="Vai fazer 12 anos"
+      />
+    </div>
+  )
+}
+
+          Arquivo Post
+export function Post(props) {
+
+  return (
+    <div>
+      <strong>{props.author}</strong>
+      <p>{props.content}</p>
+    </div>
+  )
+} 
+
+          Para a criação de informaçoes variaveis, usamos as props.
+
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: "https://github.com/Rodriguesw.png",
+      name: 'Matheus Henrique',
+      role: "Estagiário"
+    },
+    content: [
+      { type: 'paragraph', content: "Fala galeraa 👋" },
+      { type: 'paragraph', content: "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀" },
+      { type: 'link', content: "jane.design/doctorcare" },
+    ],
+    publishedAt: new Date('2023-01-25 16:17:15'),
+  }
+]
+
+para que podessemos utilizar dessa forma. 
+<header>
+    <div className={styles.author}>
+        <Avatar src={author.avatarUrl}/>
+        <div className={styles.authorInfo}>
+            <strong>{author.name}</strong>
+            <span>{author.role}</span>
+        </div>
+    </div>
+
+    <time title="24 de janeiro às 14:40h" datatime="2023-01-24 14:40:19">
+        {publishedDateformatted}
+        </time>
+</header>
+
+
+Podemos trabalhar com datas, utilizando esse código.
+
+const publishedDateformatted = new Intl.DateTimeFormat('pt-BR', {
+  day: '2-digit',
+  month: 'long',
+  hour: '2-digit',
+  minute: '2-digit'
+}).format(publishedAt);
+
+Utilizando com base no código do const posts.
+
+publishedAt: new Date('2023-01-25 16:17:15') 
+
+                            Trabalhando com Datas com date-fns
+Instale o date-fns no terminal.
+npm i date-fns
+
+Feito isso, é preciso importar.
+import {format} from 'date-fns';
+
+Depois disso use o seguinte código para a formatação:
+const publishedDateformatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'")
+
+E depois jogue na tag time:
+<time title="24 de janeiro às 14:40h" datatime="2023-01-24 14:40:19">
+  {publishedDateformatted}
+  </time>
+
+Não se esqueça que o "publishedAt" será pego no "posts" que fica em "App.jsx".
+
+                      Agora resta deixar em Português
+Use:
+import ptBR from 'date-fns/locale/pt-BR';
+
+E no terceiro parâmetro coloque em formato de objeto.
+{
+  locale: ptBR,
+}
+
+Código final, fica assim:
+const publishedDateformatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
+  locale: ptBR,
+})
+
+
+Coloque o "publishedDateformatted" no title da tag time (<time></time>)
+
+Código do arquivo Post.jsx.
+<time title={publishedDateformatted} datatime="2023-01-24 14:40:19">             
+</time>
+
+                          Comparando a data da publicação com a data atual.
+Importando o formatDistanceToNow no date-fns
+import {format, formatDistanceToNow } from 'date-fns';
+
+Realize o seguinte código.
+const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
+  locale: ptBR,
+  addSuffix: true        //Isso irá adicionar um prefixo antes do horário, exemplo: "há 2 dias"
+})
+
+Feito isso adicione na tag time.
+<time title={publishedDateformatted} datatime={publishedAt.toISOString()}>
+  {publishedDateRelativeToNow}
+  </time>
+
+
+
+
+
+
+
+
+
+
+
