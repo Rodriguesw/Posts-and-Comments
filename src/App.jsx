@@ -16,8 +16,7 @@ const posts = [
     },
     content: [
      { type: 'paragraph', content: "Fala galeraa 👋" },
-     { type: 'paragraph', content: "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀" },
-     { type: 'link', content: "jane.design/doctorcare" },
+     { type: 'paragraph', content: "Acabei de subir mais um projeto. É um projeto bem legal para colocar no portfólio 🚀🚀" },
     ],
     publishedAt: new Date('2023-01-20 16:17:15'),
   },
@@ -25,12 +24,12 @@ const posts = [
     id: 2,
       author: {
       avatarUrl: "https://source.unsplash.com/random",
-        name: 'Thiago Algusto',
-          role: "Pleno Developer"
+        name: 'Thiago Cruz',
+          role: "Desenvolvedor Pleno "
     },
     content: [
       { type: 'paragraph', content: "Fala Dev!" },
-      { type: 'paragraph', content: "Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀" },
+      { type: 'paragraph', content: "Sempre que você atualizar a página, a minha foto de perfil irá mudar." },
       { type: 'link', content: "webpersonal/PremiumStudio" },
     ],
     publishedAt: new Date('2023-01-25 16:24:38'),
