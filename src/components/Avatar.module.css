@@ -1,5 +1,5 @@
 .avatar {
-    weight: 3rem;
+    weigth: 3rem;
     height: 3rem;
     border-radius: 8px;
    
@@ -7,7 +7,7 @@
 
 .avatarWithBorder {
     box-sizing: initial;
-    weight: 3rem;
+    weigth: 3rem;
     height: 3rem;
     border-radius: 8px;
     border: 4px solid var(--gray-800);
