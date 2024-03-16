@@ -1,6 +1,6 @@
 import styles from './Header.module.css'
 
-import Ignitelogo from '../assets/ignitelogo.svg'
+import Ignitelogo from '../../public/Ignitelogo.svg'
 
 
 
